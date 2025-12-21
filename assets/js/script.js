@@ -1,8 +1,6 @@
-/* NOTE: Hamburger menu logic is now handled in 'nav-component.js'
-   to avoid conflicts. Do not add it here.
-*/
+/* NOTE: Hamburger menu logic is in 'nav-component.js' */
 
-// 1. Dynamic Greeting based on time
+// 1. Dynamic Greeting (Keep your existing code)
 const greetingElement = document.getElementById('greeting');
 const hour = new Date().getHours();
 let greetingText = "Welcome to ICT Revision";
@@ -19,9 +17,8 @@ if(greetingElement) {
     greetingElement.innerText = greetingText;
 }
 
-/* ACCORDION LOGIC FOR PAST PAPERS */
+/* ACCORDION LOGIC FOR PAST PAPERS (Keep your existing code) */
 const yearHeaders = document.querySelectorAll('.year-header');
-
 yearHeaders.forEach(header => {
     header.addEventListener('click', () => {
         const card = header.parentElement;
@@ -29,13 +26,29 @@ yearHeaders.forEach(header => {
     });
 });
 
-/* TOPIC CARD INTERACTION */
+/* UPDATED TOPIC CARD INTERACTION - LINKS TO NEW PAGES */
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.topic-card');
+    
+    // Map card titles to filenames
+    const pageMap = {
+        "💾 Information Processing": "pages/information-processing.html",
+        "💻 Computer Systems": "pages/computer-systems.html",
+        "🌐 Internet & Apps": "pages/internet-apps.html",
+        "⌨️ Computational Thinking": "pages/computational-thinking.html"
+    };
+
     cards.forEach(card => {
+        card.style.cursor = "pointer"; // Make it look clickable
         card.addEventListener('click', function() {
             const title = this.querySelector('h3').innerText;
-            alert("You selected: " + title + "\n\nContent for this module is coming soon!");
+            const targetPage = pageMap[title];
+            
+            if (targetPage) {
+                window.location.href = targetPage;
+            } else {
+                alert("Page under construction!");
+            }
         });
     });
 });
