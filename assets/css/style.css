@@ -67,38 +67,6 @@ a {
     color: var(--primary-color);
 }
 
-/* Dropdown Menu */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--white);
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    border-radius: 5px;
-    top: 100%;
-}
-
-.dropdown-content a {
-    color: var(--text-color);
-    padding: 12px 16px;
-    display: block;
-    font-size: 0.95rem;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 /* Mobile Hamburger */
 .hamburger {
     display: none;
@@ -114,21 +82,7 @@ a {
     transition: all 0.3s ease;
 }
 
-/* --- HERO SECTION (CLEANED) --- */
-
-/* 1. Reset any old Hero styles */
-.hero {
-    background: transparent;
-    color: var(--text-color);
-    text-align: center;
-    padding: 0;
-}
-
-.small-hero {
-    padding: 2rem 1rem;
-}
-
-/* 2. Main Hero Container (White Background) */
+/* --- HERO SECTION (Cleaned) --- */
 .hero-container {
     display: flex;
     justify-content: center;
@@ -138,7 +92,7 @@ a {
     /* Clean White */
 }
 
-/* 3. Hero Text (Dark Grey for readability) */
+/* Big ICT Text Styles */
 .hero-aurora {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
@@ -148,26 +102,16 @@ a {
     color: #1f2937;
 }
 
-/* 4. The Aurora Animation (Adjusted for Light Theme) */
+/* The Gradient Animation */
 .hero-aurora .highlight {
     display: block;
     margin-top: 10px;
-
-    /* Vibrant Gradient: Blue -> Purple -> Pink -> Cyan */
-    background: linear-gradient(45deg,
-            #2563eb,
-            #7c3aed,
-            #db2777,
-            #06b6d4);
+    background: linear-gradient(45deg, #2563eb, #7c3aed, #db2777, #06b6d4);
     background-size: 300% 300%;
-
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-
     animation: aurora-move 6s ease infinite;
-
-    /* Soft shadow to make it pop on white */
     filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.3));
 }
 
@@ -185,277 +129,7 @@ a {
     }
 }
 
-/* --- MAIN CONTAINER --- */
-.container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-/* --- SHARED GRID SYSTEM --- */
-.grid-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-bottom: 3rem;
-    align-items: start;
-}
-
-/* --- HOMEPAGE SPECIFIC STYLES --- */
-.section-title {
-    text-align: center;
-    margin: 3rem 0 2rem;
-    font-size: 2rem;
-    color: var(--secondary-color);
-}
-
-.topic-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid #e5e7eb;
-}
-
-.topic-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-}
-
-.topic-card h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-/* --- PAST PAPER SPECIFIC STYLES --- */
-.info-box {
-    background-color: #e0f2fe;
-    border-left: 5px solid var(--primary-color);
-    padding: 15px;
-    margin-bottom: 2rem;
-    border-radius: 4px;
-    color: #0c4a6e;
-    text-align: center;
-}
-
-.year-card {
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 100%;
-    min-width: 280px;
-}
-
-.year-header {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 15px 25px;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.3s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.year-header:hover {
-    filter: brightness(110%);
-}
-
-.year-header h2 {
-    font-size: 1.25rem;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.year-header::after {
-    content: '+';
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--white);
-    margin-left: 15px;
-}
-
-.year-card.active .year-header::after {
-    content: '-';
-}
-
-.paper-grid {
-    display: none;
-    padding: 20px;
-    background-color: #fff;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.year-card.active .paper-grid {
-    display: flex;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.paper-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: var(--background);
-    color: var(--text-color);
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #d1d5db;
-    font-weight: 500;
-    transition: all 0.2s;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1rem;
-}
-
-.paper-btn:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-color: var(--primary-color);
-}
-
-.marking {
-    background-color: #ecfdf5;
-    color: #065f46;
-    border-color: #a7f3d0;
-}
-
-.marking:hover {
-    background-color: #059669;
-    border-color: #059669;
-    color: var(--white);
-}
-
-.syllabus-header {
-    text-align: center;
-    padding: 10px 20px;
-    margin-bottom: 1.5rem;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.new-syllabus {
-    background-color: #d1fae5;
-    color: #065f46;
-    border: 1px solid #6ee7b7;
-}
-
-.syllabus-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 3rem auto 2rem auto;
-    color: #b45309;
-    width: 100%;
-    max-width: 800px;
-}
-
-.divider-line {
-    flex-grow: 1;
-    height: 1px;
-    background-color: #fcd34d;
-}
-
-.divider-text {
-    padding: 5px 15px;
-    margin: 0 10px;
-    font-weight: bold;
-    background-color: #fffbeb;
-    border: 1px solid #fcd34d;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-
-/* --- FOOTER --- */
-footer {
-    background-color: #1f2937;
-    color: var(--white);
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Hidden by default */
-        flex-direction: column;
-        width: 100%;
-        position: absolute; /* Float above content */
-        top: 100%; /* Push it right below the navbar */
-        left: 0;
-        background-color: var(--white); /* Solid White Background */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Drop Shadow */
-        text-align: center;
-        padding: 0;
-        z-index: 9999; /* Ensure it is ON TOP of the timer */
-        border-top: 1px solid #f1f1f1;
-    }
-
-    /* When the user clicks, this class is added */
-    .nav-links.active {
-        display: flex; /* Show the menu */
-    }
-
-    .nav-links li {
-        width: 100%;
-    }
-
-    .nav-links li a {
-        display: block;
-        padding: 20px;
-        width: 100%;
-        border-bottom: 1px solid #eee; /* Separator lines */
-    }
-    
-    .nav-links li a:hover {
-        background-color: #f9fafb; /* Slight grey on hover */
-    }
-
-    .hamburger {
-        display: block;
-        cursor: pointer;
-    }
-    
-    /* Optional: Hamburger Animation Effect */
-    .hamburger.toggle .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    .hamburger.toggle .bar:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.toggle .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-}
-
-/* --- COUNTDOWN TIMER STYLES --- */
+/* --- COUNTDOWN COMPONENT STYLES --- */
 .countdown-wrapper {
     text-align: center;
     max-width: 800px;
@@ -476,14 +150,15 @@ footer {
     letter-spacing: 1px;
 }
 
+/* The Giant ICT Title */
 .main-title {
-    font-family: 'Consolas', 'Courier New', monospace; /* CHANGED: Code font */
-    font-size: 8rem; /* Increased from 3rem to 8rem */
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 8rem;
     font-weight: 900;
-    margin: 0;       /* Removed vertical margin to keep it tight */
-    line-height: 1;  /* Keeps the text height compact */
-    color: #1e3a8a;  /* Strong Blue */
-    letter-spacing: -2px; /* Makes the letters sit closer together */
+    margin: 0;
+    line-height: 1;
+    color: #1e3a8a;
+    letter-spacing: -2px;
 }
 
 .status-text {
@@ -544,15 +219,278 @@ footer {
     }
 }
 
-/* Ensure the English title fits on smaller screens */
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 5rem; /* Make text smaller on mobile */
-        line-height: 1.2;
+/* --- MAIN CONTAINER & GRIDS --- */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 3rem;
+    align-items: start;
+}
+
+/* --- OTHER COMPONENT STYLES --- */
+.topic-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.topic-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.year-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+}
+
+.year-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.year-header:hover {
+    filter: brightness(110%);
+}
+
+.year-header h2 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.year-header::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    margin-left: 15px;
+}
+
+.year-card.active .year-header::after {
+    content: '-';
+}
+
+.paper-grid {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.year-card.active .paper-grid {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.paper-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--text-color);
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #d1d5db;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.paper-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.marking {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.marking:hover {
+    background-color: #059669;
+    border-color: #059669;
+    color: var(--white);
+}
+
+.syllabus-header {
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.new-syllabus {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.syllabus-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem auto 2rem auto;
+    color: #b45309;
+    width: 100%;
+    max-width: 800px;
+}
+
+.divider-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #fcd34d;
+}
+
+.divider-text {
+    padding: 5px 15px;
+    margin: 0 10px;
+    font-weight: bold;
+    background-color: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.info-box {
+    background-color: #e0f2fe;
+    border-left: 5px solid var(--primary-color);
+    padding: 15px;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    color: #0c4a6e;
+    text-align: center;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #1f2937;
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- MOBILE RESPONSIVENESS (FIXED) --- */
+@media (max-width: 768px) {
+
+    /* 1. Rotate the Top Bar */
+    .hamburger.toggle .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    /* 2. Hide the Middle Bar */
+    .hamburger.toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    /* 3. Rotate the Bottom Bar */
+    .hamburger.toggle .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* Push below navbar */
+        left: 0;
+        background-color: var(--white);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        border-top: 1px solid #e5e7eb;
+
+        /* THIS IS THE CRITICAL FIX: */
+        z-index: 99999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 15px;
+        width: 100%;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    /* --- HAMBURGER ANIMATION --- */
+    .hamburger.toggle .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.toggle .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Mobile Font Sizing */
+    .main-title {
+        font-size: 5rem;
+    }
+
     .time-number {
-        font-size: 2.5rem; /* Adjust number size for mobile */
+        font-size: 3rem;
     }
 
     .timer-grid {
