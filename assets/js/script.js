@@ -41,3 +41,23 @@ yearHeaders.forEach(header => {
         card.classList.toggle('active');
     });
 });
+
+/* --- TOPIC CARD INTERACTION --- */
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Select all elements with the class 'topic-card'
+    const cards = document.querySelectorAll('.topic-card');
+
+    // 2. Loop through each card and add a click listener
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            
+            // Optional: Grab the title text to make the alert specific
+            // (e.g., "You clicked on Information Processing")
+            const title = this.querySelector('h3').innerText;
+            
+            alert("You selected: " + title + "\n\nContent for this module is coming soon!");
+        });
+    });
+
+});
