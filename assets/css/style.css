@@ -436,7 +436,24 @@ a {
 	font-size: 0.95rem;
 	white-space: nowrap;
 }
+/* --- NEW SYLLABUS GREEN DIVIDER --- */
 
+/* 1. Override the main text color for the container */
+.syllabus-divider.new-syllabus-style {
+	color: #065f46; /* Dark Green */
+}
+
+/* 2. Change the horizontal lines to green */
+.syllabus-divider.new-syllabus-style .divider-line {
+	background-color: #34d399; /* Bright Green */
+}
+
+/* 3. Change the badge (center text) to green theme */
+.syllabus-divider.new-syllabus-style .divider-text {
+	background-color: #d1fae5; /* Light Mint Background */
+	border-color: #34d399; /* Green Border */
+	color: #065f46; /* Dark Green Text */
+}
 .info-box {
 	background-color: #e0f2fe;
 	border-left: 5px solid var(--primary-color);
