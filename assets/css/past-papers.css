@@ -1,74 +1,48 @@
 /* Scope: .paper-archive */
 
 .paper-archive {
-    padding: 2rem 0;
-    max-width: 800px;
+    padding: 4rem 0;
+    max-width: 900px;
     margin: 0 auto;
+    /* 1. Global Font Change to Consolas */
+    font-family: Consolas, "Courier New", monospace; 
 }
 
+/* --- HEADER SECTION UPDATES --- */
+
 .paper-archive__header {
-    text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .paper-archive__title {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 0.5rem;
+    /* MOBILE: Match the size of the years (2.5rem) */
+    font-size: 2.5rem; 
+    font-weight: 700; 
+    color: #000;
+    margin-bottom: 0;
+    line-height: 1.1; 
+    letter-spacing: -0.03em;
 }
 
 .paper-archive__subtitle {
-    font-size: 1rem;
-    color: #666;
+    font-size: 1rem; /* Smaller on mobile to fit */
+    color: #555;
+    margin-top: 0.5rem;
+    font-weight: 400;
 }
 
-/* Grouping Container */
+/* --- LIST LAYOUT --- */
+
 .paper-archive__group {
-    margin-bottom: 3rem; /* Spacing between the New and Old sections */
+    margin-bottom: 0;
 }
 
-/* Syllabus Labels (The Reminders) */
-.paper-archive__syllabus-label {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #eee;
-    color: #444;
-}
-
-/* Optional: Different colors for emphasis */
-.paper-archive__syllabus-label--new {
-    color: #2da44e; /* Green for New */
-    border-color: #2da44e;
-}
-
-.paper-archive__syllabus-label--old {
-    color: #d73a49; /* Red/Grey for Old */
-    border-color: #d73a49;
-}
-
-/* The Grid Container */
 .paper-archive__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 1rem;
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-/* Responsive Columns */
-@media (min-width: 600px) {
-    .paper-archive__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 900px) {
-    .paper-archive__grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    display: block;
 }
 
 .paper-archive__item {
@@ -76,31 +50,80 @@
     padding: 0;
 }
 
-/* Link Styles */
+/* --- SHARED STYLES (Years & Reminders) --- */
+
+.paper-archive__syllabus-label,
 .paper-archive__link {
     display: block;
     width: 100%;
-    padding: 1rem;
-    text-align: center;
+    border-bottom: 2px solid #000; 
     text-decoration: none;
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden; 
+    font-family: Consolas, "Courier New", monospace;
 }
 
-.paper-archive__link:hover,
-.paper-archive__link:focus {
-    background-color: #007bff;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-color: #007bff;
+/* --- TYPOGRAPHY & ANIMATION (Years) --- */
+
+.paper-archive__text {
+    display: block;
+    /* Mobile Size */
+    font-size: 2.5rem; 
+    font-weight: 700; 
+    color: #000;
+    line-height: 1; 
+    padding: 1.5rem 0;
+    
+    /* Animation Setup */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: bottom left;
 }
 
-.paper-archive__link:active {
-    transform: translateY(0);
+/* --- PC SPECIFIC EFFECTS --- */
+
+
+@media (min-width: 768px) {
+    .paper-archive__text {
+        /* PC Size: Large */
+        font-size: 5rem; 
+        padding: 1.5rem 0;
+        
+        /* Hiding effect: Push text down by 12% */
+        transform: translateY(12%); 
+    }
+
+    /* Pop-up on Hover */
+    .paper-archive__link:hover .paper-archive__text {
+        transform: translateY(0%);
+        color: #333;
+    }
+
+    .paper-archive__title {
+        font-size: 5rem; 
+    }
+    
+    .paper-archive__subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- SYLLABUS LABELS (Reminders) --- */
+
+.paper-archive__syllabus-label {
+    font-size: 1.5rem; 
+    font-weight: 700;
+    color: #555;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc; 
+    cursor: default;
+    
+    /* Gap Adjustment: Ensure it doesn't float too far from the header */
+    margin: 1rem 0 0 0; 
+}
+
+@media (min-width: 768px) {
+    .paper-archive__syllabus-label {
+        font-size: 1.6rem; 
+        padding: 1.2rem 0;
+    }
 }
