@@ -83,21 +83,41 @@
 
 
 @media (min-width: 768px) {
+    /* 1. Adjust the Container Height Constraints */
+    .paper-archive__link {
+        /* Ensure the container isn't too tall, so the hiding happens sooner */
+        padding-bottom: 0; 
+    }
+
+    /* 2. The Text Animation */
     .paper-archive__text {
         /* PC Size: Large */
         font-size: 5rem; 
-        padding: 1.5rem 0;
         
-        /* Hiding effect: Push text down by 12% */
-        transform: translateY(12%); 
+        /* Reduced vertical padding so the text sits closer to the line */
+        padding: 1rem 0; 
+        
+        /* KEY CHANGE: Increased to 35% 
+           This pushes the text down deeply. Because the parent has 
+           'overflow: hidden', the bottom part of the words will disappear 
+           behind the border line.
+        */
+        transform: translateY(33%); 
+        
+        /* Smooth snappy animation */
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Pop-up on Hover */
+    /* 3. Pop-up on Hover */
     .paper-archive__link:hover .paper-archive__text {
-        transform: translateY(0%);
+        /* Slide back up to 0% to reveal the full text */
+        transform: translateY(20%);
+        
+        /* Optional: Change color slightly on hover */
         color: #333;
     }
-
+    
+    /* 4. Scaling the Header for PC */
     .paper-archive__title {
         font-size: 5rem; 
     }
