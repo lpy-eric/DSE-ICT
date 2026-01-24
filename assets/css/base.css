@@ -39,74 +39,132 @@ a {
 
 .grid-wrapper {
     display: grid;
-    /* CHANGED: Use wider min-width (280px) to force single column on mobile */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    /* CHANGED: Mobile first - 1 column that fits strictly within container */
+    grid-template-columns: 1fr; 
     gap: 20px; 
     width: 100%;
     margin-bottom: 3rem;
-    align-items: stretch;
+    align-items: start; /* CHANGED: Prevent stretching to match tallest */
 }
 
 /* --- TOPIC CARDS & GENERAL COMPONENTS --- */
 .topic-card {
-    background: var(--white);
-    padding: 1.5rem; /* Reduced padding for mobile optimization */
-    border-radius: 10px;
+    background: var(--card-bg, #fff);
+    padding: 1.25rem; 
+    border-radius: 0 12px 12px 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
     
     /* ADDED: Flex column to ensure height distribution if needed */
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    gap: 1rem; /* Specific gap for mobile view */
-    height: 100%;
+    gap: 0.25rem; /* Specific gap for mobile view */
+    /* REMOVED: height: 100% to fix grid overlap issues */
+    width: 100%;
+    aspect-ratio: 1.5 / 1; /* Follow folder ratio */
+
+    /* Folder Tab Setup */
+    position: relative;
+    margin-top: 24px; /* Space for the tab */
+    z-index: 1;
+}
+
+/* Folder Tab */
+.topic-card::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 0;
+    width: 35%; /* Proportional tab width */
+    height: 20px;
+    background: var(--card-bg, #fff);
+    border-radius: 10px 10px 0 0;
+    z-index: -1;
 }
 
 .topic-card:hover {
     transform: translateY(-5px);
-    border-color: var(--primary-color);
+    box-shadow: 0 15px 25px -5px var(--card-shadow, rgba(0,0,0,0.2));
 }
 
 .topic-card h3 {
     margin-bottom: 0;
-    color: var(--primary-color);
-    font-size: 1.1rem; /* Adjusted font size for better fit on small cards */
+    color: white;
+    font-size: 1rem; /* Slightly reduced size to fit 2 lines better */
+    line-height: 1.3;
     
-    /* ADDED: Force one line and handle overflow gracefully before JS kicks in */
-    white-space: nowrap;
-    overflow: hidden; 
-    text-overflow: ellipsis; /* Fallback */
+    /* CHANGED: Allow 2 lines instead of nowrap */
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
     width: 100%;
 }
 
 /* PC Override for Topic Card */
 @media (min-width: 768px) {
     .grid-wrapper {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
     }
     .topic-card {
-        padding: 2rem;
-        gap: 1.5rem;
+        padding: 1.5rem;
+        gap: 0.5rem;
     }
     .topic-card h3 {
-        font-size: 1.3rem; 
+        /* CHANGED: Maintain consistent size across all blocks */
+        font-size: 1rem; 
     }
 }
 
 .topic-tag {
     display: inline-block;
     padding: 4px 12px;
-    background: #e0f2fe;
-    color: #0369a1;
+    background: white;
+    color: var(--card-bg, #333);
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
     /* margin-top: auto; REMOVED: No longer pushing to bottom */
+}
+
+/* --- COLOR VARIANTS (Topic Groups - Vivid / Obvious) --- */
+
+/* DATA: Vivid Sky Blue */
+.topic-card--data {
+    --card-bg: rgba(70, 170, 240, 1); 
+    --card-shadow: rgba(70, 170, 240, 0.4);
+}
+
+/* SYSTEM: Vivid Green */
+.topic-card--system {
+    --card-bg: rgba(80, 200, 120, 1); 
+    --card-shadow: rgba(80, 200, 120, 0.4);
+}
+
+/* WEB: Vivid Indigo/Purple */
+.topic-card--web {
+    --card-bg: rgba(130, 130, 220, 1); 
+    --card-shadow: rgba(130, 130, 220, 0.4);
+}
+
+/* CODING: Vivid Pink/Rose */
+.topic-card--coding {
+    --card-bg: rgba(240, 120, 160, 1); 
+    --card-shadow: rgba(240, 120, 160, 0.4);
+}
+
+/* SOCIAL: Vivid Orange */
+.topic-card--social {
+    --card-bg: rgba(250, 170, 80, 1); 
+    --card-shadow: rgba(250, 170, 80, 0.4);
 }
 
 /* --- INTERACTIVE TOOLS STYLING --- */
@@ -290,3 +348,6 @@ footer {
     40% { transform: translate(-50%, -10px); }
     60% { transform: translate(-50%, -5px); }
 }
+
+
+

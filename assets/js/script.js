@@ -16,15 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
         "Algorithm & Programming": ""
     };
 
-    // 1. Run Text Resizing Logic (Only if on PC/Tablet usually, but safe to run always)
+    // 1. Run Text Resizing Logic - DISABLED to ensure consistent font size check
+    /*
     if (window.innerWidth >= 768) {
          // Using the helper from ui-components.js
          if (typeof fitTextToContainer === 'function') {
              fitTextToContainer('.topic-card h3');
          }
     }
+    */
     
     // Add resize listener to re-calculate on window resize
+    /*
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768) {
             if (typeof fitTextToContainer === 'function') {
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
              document.querySelectorAll('.topic-card h3').forEach(el => el.style.fontSize = '');
         }
     });
+    */
 
     cards.forEach(card => {
         card.style.cursor = "pointer"; // Make it look clickable
