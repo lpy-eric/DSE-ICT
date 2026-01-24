@@ -1,14 +1,5 @@
 /* NOTE: Hamburger menu logic is in 'nav-component.js' */
 
-/* ACCORDION LOGIC FOR PAST PAPERS (Keep your existing code) */
-const yearHeaders = document.querySelectorAll('.year-header');
-yearHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-        const card = header.parentElement;
-        card.classList.toggle('active');
-    });
-});
-
 /* UPDATED TOPIC CARD INTERACTION - LINKS TO NEW PAGES */
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.topic-card');
