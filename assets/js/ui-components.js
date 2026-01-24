@@ -35,3 +35,26 @@ function attachScrollLogic(buttonId, targetId) {
         });
     }
 }
+
+/**
+ * Resizes text within elements to ensure they fit within their container on one line.
+ * @param {string} selector - CSS selector for the elements to resize.
+ */
+function fitTextToContainer(selector) {
+    const elements = document.querySelectorAll(selector);
+
+    elements.forEach(el => {
+        // Reset to default to measure 'natural' overflow
+        el.style.fontSize = ''; 
+        
+        let fontSize = parseFloat(window.getComputedStyle(el).fontSize);
+        const minSize = 12; // Don't go below 12px
+        
+        // While the text content is wider than the container...
+        // Note: scrollWidth is the full width of content, clientWidth is the visible width
+        while (el.scrollWidth > el.clientWidth && fontSize > minSize) {
+            fontSize -= 0.5; // Decrement by 0.5px
+            el.style.fontSize = `${fontSize}px`;
+        }
+    });
+}

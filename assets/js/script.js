@@ -6,15 +6,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Map card titles to filenames
     const pageMap = {
-        "Information Processing": "pages/information-processing.html",
-        "Computer System Fundamentals": "pages/computer-systems.html",
-        "Internet and its Applications": "pages/internet-apps.html",
-        "Computational Thinking and Programming": "pages/computational-thinking.html",
+        "Information Processing": "",
+        "Computer System Fundamentals": "",
+        "Internet & its Applications": "",
+        "Computational Thinking & Programming": "",
         "Social Implications": "",
         "Databases": "",
         "Web Application Development": "",
-        "Algorithm and Programming": ""
+        "Algorithm & Programming": ""
     };
+
+    // 1. Run Text Resizing Logic (Only if on PC/Tablet usually, but safe to run always)
+    if (window.innerWidth >= 768) {
+         // Using the helper from ui-components.js
+         if (typeof fitTextToContainer === 'function') {
+             fitTextToContainer('.topic-card h3');
+         }
+    }
+    
+    // Add resize listener to re-calculate on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            if (typeof fitTextToContainer === 'function') {
+                fitTextToContainer('.topic-card h3');
+            }
+        } else {
+             // Reset on mobile if needed, or leave as is. 
+             // Mobile layout is vertical stack so usually plenty of width, 
+             // or standard wrapping is preferred? User asked for "Computer Layout".
+             // We can clear inline styles to let CSS take over on mobile.
+             document.querySelectorAll('.topic-card h3').forEach(el => el.style.fontSize = '');
+        }
+    });
 
     cards.forEach(card => {
         card.style.cursor = "pointer"; // Make it look clickable

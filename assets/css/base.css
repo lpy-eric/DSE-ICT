@@ -39,17 +39,18 @@ a {
 
 .grid-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    /* CHANGED: Use wider min-width (280px) to force single column on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; 
     width: 100%;
     margin-bottom: 3rem;
-    align-items: stretch; /* CHANGED: stretch to make cards equal height */
+    align-items: stretch;
 }
 
 /* --- TOPIC CARDS & GENERAL COMPONENTS --- */
 .topic-card {
     background: var(--white);
-    padding: 2rem;
+    padding: 1.5rem; /* Reduced padding for mobile optimization */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -59,9 +60,9 @@ a {
     /* ADDED: Flex column to ensure height distribution if needed */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Fixes width so tags aren't full width */
-    justify-content: center; /* Centers content vertically */
-    gap: 1.5rem; /* Ensures gap between title, desc, and tag */
+    align-items: center; 
+    justify-content: center; 
+    gap: 1rem; /* Specific gap for mobile view */
     height: 100%;
 }
 
@@ -71,8 +72,30 @@ a {
 }
 
 .topic-card h3 {
-    margin-bottom: 0; /* Let flex gap handle spacing */
+    margin-bottom: 0;
     color: var(--primary-color);
+    font-size: 1.1rem; /* Adjusted font size for better fit on small cards */
+    
+    /* ADDED: Force one line and handle overflow gracefully before JS kicks in */
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Fallback */
+    width: 100%;
+}
+
+/* PC Override for Topic Card */
+@media (min-width: 768px) {
+    .grid-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .topic-card {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+    .topic-card h3 {
+        font-size: 1.3rem; 
+    }
 }
 
 .topic-tag {
