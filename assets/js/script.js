@@ -6,10 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Map card titles to filenames
     const pageMap = {
-        "💾 Information Processing": "pages/information-processing.html",
-        "💻 Computer Systems": "pages/computer-systems.html",
-        "🌐 Internet & Apps": "pages/internet-apps.html",
-        "⌨️ Computational Thinking": "pages/computational-thinking.html"
+        "Information Processing": "pages/information-processing.html",
+        "Computer System Fundamentals": "pages/computer-systems.html",
+        "Internet and its Applications": "pages/internet-apps.html",
+        "Computational Thinking and Programming": "pages/computational-thinking.html",
+        "Social Implications": "",
+        "Databases": "",
+        "Web Application Development": "",
+        "Algorithm and Programming": ""
     };
 
     cards.forEach(card => {
