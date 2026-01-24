@@ -10,12 +10,7 @@ function loadHero(line1, line2) {
             <span class="highlight">${line2}</span>
         </h1>
         
-        <div class="scroll-indicator" id="hero-scroll-btn">
-            <span>Click</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/>
-            </svg>
-        </div>
+        ${getScrollIndicatorHTML('hero-scroll-btn')}
     </div>
     `;
 
@@ -24,21 +19,7 @@ function loadHero(line1, line2) {
     if (placeholder) {
         placeholder.innerHTML = heroHTML;
 
-        // ADDED: Logic to handle the click event
-        const scrollBtn = document.getElementById('hero-scroll-btn');
-        if (scrollBtn) {
-            scrollBtn.addEventListener('click', () => {
-                // Try to find the specific main content area
-                const mainContent = document.getElementById('main-content');
-                
-                if (mainContent) {
-                    // Smooth scroll to the content
-                    mainContent.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    // Fallback: If ID not found, just scroll down one viewport height
-                    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-                }
-            });
-        }
+        // Use the shared logic from ui-components.js
+        attachScrollLogic('hero-scroll-btn', 'main-content');
     }
 }
