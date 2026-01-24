@@ -210,9 +210,32 @@ a {
     align-items: center;
     min-height: calc(100vh - var(--navbar-height));
     width: 100%;
-    background: #ffffff;
+    
+    /* Background Image Setup */
+    /* Using %20 for space to ensure cross-browser compatibility */
+    background: url('../images/DSE%20Exam.webp') no-repeat center center;
+    background-size: cover;
+    /* background-attachment: fixed; REMOVED: Fixes "weird ratio" / zooming issues on some screens */
+    
     padding: 0 20px;
     position: relative;
+    
+    /* Ensure the background is positioned correctly behind the overlay */
+    z-index: 1;
+}
+
+/* Add an overlay to ensure text contrast (The "Opacity" Effect) */
+.hero-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* White semi-transparent overlay to ensure text readability */
+    /* Adjust the last number (0.85) to change opacity strength */
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1; 
 }
 
 
